@@ -4,6 +4,8 @@ This app was created using in Python using PyQt6 and OpenAi's Chatbot.
 
 The goal here is to simply have a chatbit AI you can talk with through with a sufficient gui platform.
 
+![](image/bot.gif)
+
 ### Talking with the ChatBot:
 
 The ChatBot is able to answer most of your questions and able to have a casual talk with you. This means, you will get a correct and friendly answer most of the time but some inaccuracies cam happen.
