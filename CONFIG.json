@@ -1,0 +1,5 @@
+{
+  "API": "your API key",
+
+  "__how_to_use__": "This is a template, insert api key in API and change 'path' in backend.py to 'CONFIG.json'."
+}
