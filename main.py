@@ -1,5 +1,7 @@
+from PyQt6 import QtWidgets
 from PyQt6.QtWidgets import QApplication, QMainWindow, \
     QTextEdit, QLineEdit, QPushButton, QStyleFactory
+from PyQt6.QtGui import QMovie, QPainter, QPixmap
 import sys
 from backend import Chatbot
 import threading
@@ -11,9 +13,17 @@ class ChatbotWindow(QMainWindow):
 
         self.chatbot = Chatbot()
 
-        self.setMinimumSize(700, 400)
+        self.setWindowTitle("My ChatBot")
 
-        self.setStyleSheet("background-color: #f4c430")
+        self.setMinimumSize(700, 400)
+        self.setFixedSize(700, 400)
+
+        self.setStyleSheet("background-color: #606c97")
+
+        # Add image
+        self.movie = QMovie("image/bot.gif")
+        self.movie.frameChanged.connect(self.repaint)
+        self.movie.start()
 
         # Add chat area widget
         self.chat_area = QTextEdit(self)
@@ -53,6 +63,14 @@ class ChatbotWindow(QMainWindow):
         response = self.chatbot.get_response(user_input)
         self.chat_area.append(f"<p style='color:#333333; background-color: #d3d3d3'>Bot: {response}</p>")
 
+    def paintEvent(self, event):
+        current_frame = self.movie.currentPixmap()
+        frame_rect = current_frame.rect()
+        frame_rect.setX(580)
+        frame_rect.setY(0)
+        if frame_rect.intersects(event.rect()):
+            painter = QPainter(self)
+            painter.drawPixmap(frame_rect.left(), frame_rect.top(), current_frame)
 
 app = QApplication(sys.argv)
 main_window = ChatbotWindow()
