@@ -2,7 +2,7 @@
 
 This app was created using in Python using PyQt6 and OpenAi's Chatbot.
 
-The goal here is to simply have a chatbit AI you can talk with through with a sufficient gui platform.
+The goal here is to simply have a chatbot AI you can talk with through with a sufficient gui platform.
 
 ![](image/bot.gif)
 
